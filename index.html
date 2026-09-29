@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,256 +8,714 @@
     <title>MON STORE | Mode & Vêtements</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #ffffff;
-            color: #111111;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background: #ffffff;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+
         header {
-            background: #000000;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            background: #222;
+            color: white;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 27px;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
-        nav a {
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
         }
 
-        nav a:hover {
+        .menu a:hover {
             opacity: 0.6;
         }
 
+        /* =========================
+           ACCUEIL
+        ========================= */
+
         .hero {
-            min-height: 600px;
-            background: linear-gradient(135deg, #111111, #333333);
-            color: white;
+            min-height: 650px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #eeeeee, #222222);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: bold;
         }
 
         .hero h1 {
-            font-size: 60px;
+            font-size: clamp(55px, 10vw, 110px);
+            letter-spacing: 8px;
+            margin: 20px 0 10px;
+        }
+
+        .hero h2 {
+            font-size: clamp(22px, 4vw, 36px);
+            font-weight: 400;
             margin-bottom: 20px;
-            letter-spacing: 4px;
         }
 
         .hero p {
-            font-size: 20px;
-            margin-bottom: 35px;
-            color: #dddddd;
+            max-width: 600px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.7;
         }
 
         .button {
             display: inline-block;
+            margin-top: 35px;
+            padding: 16px 35px;
             background: white;
-            color: black;
-            padding: 15px 30px;
+            color: #222;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 3px;
+            border-radius: 5px;
+            transition: 0.3s;
         }
 
         .button:hover {
-            background: #dddddd;
+            transform: translateY(-3px);
         }
 
-        section {
-            padding: 80px 8%;
-        }
+        /* =========================
+           PRESENTATION
+        ========================= */
 
-        .titre {
+        .presentation {
+            max-width: 1000px;
+            margin: auto;
+            padding: 90px 25px;
             text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
         }
 
-        .produits {
+        .presentation h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .presentation p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* =========================
+           VÊTEMENTS
+        ========================= */
+
+        .boutique {
+            background: #f7f7f7;
+            padding: 80px 25px;
+        }
+
+        .boutique h2 {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .products {
+            max-width: 1100px;
+            margin: auto;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
-        .produit {
-            background: #f4f4f4;
+        .product {
+            background: white;
             padding: 20px;
             text-align: center;
-            border-radius: 8px;
-            transition: transform 0.3s;
+            border: 1px solid #e5e5e5;
+            transition: 0.3s;
         }
 
-        .produit:hover {
+        .product:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .image-produit {
+        .product-image {
             height: 280px;
-            background: #dddddd;
+            background: #eeeeee;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            color: #777;
             margin-bottom: 20px;
-            color: #777777;
-            font-size: 18px;
         }
 
-        .produit h3 {
-            font-size: 21px;
+        .product h3 {
+            font-size: 24px;
             margin-bottom: 10px;
         }
 
-        .prix {
+        .price {
+            font-size: 19px;
             font-weight: bold;
-            font-size: 18px;
         }
 
-        .apropos {
-            background: #111111;
-            color: white;
+        /* =========================
+           ORGANIGRAMME
+        ========================= */
+
+        .organisation {
+            padding: 90px 25px;
+            background: white;
             text-align: center;
         }
 
-        .apropos p {
-            max-width: 750px;
-            margin: auto;
-            line-height: 1.8;
-            color: #dddddd;
+        .organisation h2 {
+            font-size: 38px;
+            margin-bottom: 15px;
         }
+
+        .organisation-intro {
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .org-chart {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .org-box {
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 210px;
+            min-height: 80px;
+            padding: 15px 25px;
+            background: #222;
+            color: white;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .org-box span {
+            font-size: 14px;
+            font-weight: normal;
+            margin-top: 6px;
+            opacity: 0.8;
+        }
+
+        .org-line {
+            width: 3px;
+            height: 40px;
+            background: #222;
+            margin: auto;
+        }
+
+        .org-horizontal {
+            width: 75%;
+            height: 3px;
+            background: #222;
+            margin: 0 auto;
+        }
+
+        .org-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            position: relative;
+        }
+
+        .org-department {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .org-small {
+            width: 100%;
+            background: #f7f7f7;
+            color: #222;
+            border: 2px solid #222;
+        }
+
+        .org-small span {
+            color: #666;
+        }
+
+        .org-subline {
+            width: 3px;
+            height: 30px;
+            background: #222;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
 
         .contact {
+            padding: 90px 25px;
             text-align: center;
+            background: #f7f7f7;
         }
+
+        .contact h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            background: #000000;
+            background: #222;
             color: white;
             text-align: center;
-            padding: 25px;
+            padding: 35px 20px;
         }
 
-        @media (max-width: 800px) {
-            header {
+        footer p {
+            margin: 7px 0;
+            color: #cccccc;
+        }
+
+        /* =========================
+           TÉLÉPHONE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
                 flex-direction: column;
-                gap: 15px;
+                gap: 18px;
             }
 
-            nav a {
-                margin: 0 8px;
+            .menu {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 600px;
             }
 
             .hero h1 {
-                font-size: 40px;
+                letter-spacing: 4px;
             }
 
-            .produits {
+            .products {
                 grid-template-columns: 1fr;
             }
+
+            .org-row {
+                grid-template-columns: 1fr;
+            }
+
+            .org-horizontal {
+                display: none;
+            }
+
+            .organisation h2,
+            .boutique h2,
+            .presentation h2,
+            .contact h2 {
+                font-size: 30px;
+            }
         }
+
     </style>
 </head>
 
+
 <body>
 
+    <!-- =========================
+         MENU
+    ========================= -->
+
     <header>
-        <div class="logo">MON STORE</div>
 
         <nav>
-            <a href="#accueil">Accueil</a>
-            <a href="#boutique">Boutique</a>
-            <a href="#apropos">À propos</a>
-            <a href="#contact">Contact</a>
+
+            <div class="logo">
+                MON STORE
+            </div>
+
+            <ul class="menu">
+
+                <li>
+                    <a href="#accueil">Accueil</a>
+                </li>
+
+                <li>
+                    <a href="#boutique">Boutique</a>
+                </li>
+
+                <li>
+                    <a href="#organisation">Organisation</a>
+                </li>
+
+                <li>
+                    <a href="#apropos">À propos</a>
+                </li>
+
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
         </nav>
+
     </header>
 
-    <main>
 
-        <section class="hero" id="accueil">
-            <div>
-                <h1>MON STORE</h1>
-                <p>La mode qui vous ressemble.</p>
-                <a href="#boutique" class="button">Découvrir la boutique</a>
-            </div>
-        </section>
+    <!-- =========================
+         ACCUEIL
+    ========================= -->
 
-        <section id="boutique">
-            <h2 class="titre">Nos vêtements</h2>
+    <section class="hero" id="accueil">
 
-            <div class="produits">
+        <div class="hero-content">
 
-                <div class="produit">
-                    <div class="image-produit">
-                        Image du produit
-                    </div>
-                    <h3>T-shirt</h3>
-                    <p class="prix">29,99 €</p>
-                </div>
+            <small>Bienvenue chez</small>
 
-                <div class="produit">
-                    <div class="image-produit">
-                        Image du produit
-                    </div>
-                    <h3>Sweat</h3>
-                    <p class="prix">49,99 €</p>
-                </div>
+            <h1>MON STORE</h1>
 
-                <div class="produit">
-                    <div class="image-produit">
-                        Image du produit
-                    </div>
-                    <h3>Veste</h3>
-                    <p class="prix">79,99 €</p>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="apropos" id="apropos">
-            <h2 class="titre">À propos de nous</h2>
+            <h2>La mode qui vous ressemble</h2>
 
             <p>
-                Bienvenue dans notre magasin de vêtements.
-                Nous proposons des vêtements modernes et accessibles
-                pour créer un style qui vous ressemble.
+                Découvrez notre univers de mode et trouvez des pièces
+                pensées pour exprimer votre style.
             </p>
-        </section>
 
-        <section class="contact" id="contact">
-            <h2 class="titre">Contact</h2>
+            <a href="#boutique" class="button">
+                Découvrir la boutique
+            </a>
 
-            <p>Une question ? Contactez-nous.</p>
-            <br>
-            <p>Email : contact@monstore.fr</p>
-        </section>
+        </div>
 
-    </main>
+    </section>
+
+
+    <!-- =========================
+         PRÉSENTATION
+    ========================= -->
+
+    <section class="presentation" id="apropos">
+
+        <h2>Bienvenue chez MON STORE</h2>
+
+        <p>
+            MON STORE est un magasin de vêtements imaginé pour proposer
+            une mode moderne, accessible et adaptée à différents styles.
+            Notre objectif est de permettre à chacun de trouver des
+            vêtements et accessoires qui lui correspondent.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         BOUTIQUE
+    ========================= -->
+
+    <section class="boutique" id="boutique">
+
+        <h2>Nos vêtements</h2>
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-image">
+                    Image du produit
+                </div>
+
+                <h3>T-shirt</h3>
+
+                <p class="price">
+                    29,99 €
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-image">
+                    Image du produit
+                </div>
+
+                <h3>Sweat</h3>
+
+                <p class="price">
+                    49,99 €
+                </p>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-image">
+                    Image du produit
+                </div>
+
+                <h3>Veste</h3>
+
+                <p class="price">
+                    79,99 €
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ORGANIGRAMME
+    ========================= -->
+
+    <section class="organisation" id="organisation">
+
+        <h2>L'organisation de MON STORE</h2>
+
+        <p class="organisation-intro">
+            Découvrez les différents services qui composent notre entreprise.
+        </p>
+
+
+        <div class="org-chart">
+
+            <!-- DIRECTRICE -->
+
+            <div class="org-box">
+
+                Directrice
+
+                <span>
+                    Direction de MON STORE
+                </span>
+
+            </div>
+
+
+            <!-- LIGNE -->
+
+            <div class="org-line"></div>
+
+
+            <!-- LIGNE HORIZONTALE -->
+
+            <div class="org-horizontal"></div>
+
+
+            <!-- SERVICES -->
+
+            <div class="org-row">
+
+
+                <!-- ADMINISTRATION -->
+
+                <div class="org-department">
+
+                    <div class="org-line"></div>
+
+                    <div class="org-box org-small">
+
+                        Administration
+
+                        <span>
+                            Gestion administrative
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MAGASIN -->
+
+                <div class="org-department">
+
+                    <div class="org-line"></div>
+
+                    <div class="org-box org-small">
+
+                        Responsable magasin
+
+                        <span>
+                            Gestion du magasin
+                        </span>
+
+                    </div>
+
+
+                    <div class="org-subline"></div>
+
+
+                    <div class="org-box org-small">
+
+                        Vendeurs / vendeuses
+
+                        <span>
+                            Accueil et conseil
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ATELIER -->
+
+                <div class="org-department">
+
+                    <div class="org-line"></div>
+
+                    <div class="org-box org-small">
+
+                        Atelier / Création
+
+                        <span>
+                            Création des vêtements
+                        </span>
+
+                    </div>
+
+
+                    <div class="org-subline"></div>
+
+
+                    <div class="org-box org-small">
+
+                        Créateurs / couturiers
+
+                        <span>
+                            Fabrication et conception
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STOCK -->
+
+            <div class="org-line"></div>
+
+            <div class="org-box org-small">
+
+                Stock / Logistique
+
+                <span>
+                    Gestion des stocks et des matériaux
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>Une question ?</h2>
+
+        <p>
+            Retrouvez prochainement toutes les informations
+            pour nous contacter.
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         PIED DE PAGE
+    ========================= -->
 
     <footer>
-        <p>© 2026 MON STORE - Tous droits réservés</p>
+
+        <h3>MON STORE</h3>
+
+        <p>
+            La mode qui vous ressemble
+        </p>
+
+        <p>
+            © 2026 MON STORE - Tous droits réservés
+        </p>
+
     </footer>
 
+
 </body>
+
 </html>
